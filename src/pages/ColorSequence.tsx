@@ -46,8 +46,6 @@ function App() {
   }, [index]);
 
   function checkSequence(color: string) {
-    console.log(color);
-    console.log(color_sequence[index]);
     if (color_sequence[index] === color) {
       setIndex((index) => index + 1);
     } else {
@@ -57,11 +55,13 @@ function App() {
 
   return (
     <>
-      <img
-        src={left_arrow}
-        onClick={() => navigate("/")}
-        className="absolute m-5 w-12 rounded-xl hover:cursor-pointer hover:bg-blue-300"
-      />
+      <button
+        onClick={() => navigate(-1)}
+        className={"absolute m-5 w-12 rounded-xl hover:bg-blue-300"}
+      >
+        <img src={left_arrow} />
+      </button>
+
       <Grid
         container
         justifyContent="center"
@@ -74,11 +74,7 @@ function App() {
       >
         <Grid container justifyContent="center">
           {color_sequence.map((color, index) => (
-            <div
-              className="min-h-8 min-w-8"
-              key={index}
-              style={{ backgroundColor: color }}
-            ></div>
+            <div className="min-h-8 min-w-8" key={index} style={{ backgroundColor: color }}></div>
           ))}
         </Grid>
         <Grid container gap="0.75rem" flexWrap="wrap" justifyContent="center">

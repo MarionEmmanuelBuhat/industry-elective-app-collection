@@ -7,6 +7,7 @@ function Home() {
         <div className="flex flex-row flex-wrap justify-center gap-4">
           <NavigationButton location="/colorsequence">Color Sequence</NavigationButton>
           <NavigationButton location="/colorroll">Color Roll</NavigationButton>
+          <NavigationButton location="/alien">Alien Animation</NavigationButton>
         </div>
       </div>
     </>

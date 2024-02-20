@@ -74,10 +74,14 @@ function App() {
       >
         <Grid container justifyContent="center">
           {color_sequence.map((color, index) => (
-            <div className="min-h-8 min-w-8" key={index} style={{ backgroundColor: color }}></div>
+            <div
+              className="min-h-8 min-w-8"
+              key={index}
+              style={{ backgroundColor: color }}
+            ></div>
           ))}
         </Grid>
-        <Grid container gap="0.75rem" flexWrap="wrap" justifyContent="center">
+        <div className="grid grid-flow-row grid-cols-3 gap-4">
           {shuffled_sequence.map((color, idx) => {
             const matchingIndex: number = color_sequence.indexOf(color);
             return (
@@ -93,7 +97,7 @@ function App() {
               ></Button>
             );
           })}
-        </Grid>
+        </div>
       </Grid>
     </>
   );

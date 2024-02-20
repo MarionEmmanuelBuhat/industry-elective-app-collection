@@ -50,32 +50,34 @@ const right_frames = [
   left5,
 ];
 
-const jump_styles = ["", "", "", "pb-[3rem]", "pb-[6rem]", "pb-[9rem]", "pb-[12rem]"];
+const jump_styles = ["", "", "", "pb-[4rem]", "pb-[8rem]", "pb-[4rem]", "pb-[0rem]"];
 const left_styles = [
   "",
-  "pr-[5rem]",
-  "pr-[10rem]",
-  "pr-[15rem]",
-  "pr-[20rem]",
-  "pr-[20rem]",
-  "pr-[15rem]",
-  "pr-[10rem]",
-  "pr-[5rem]",
+  "pr-[7rem]",
+  "pr-[14rem]",
+  "pr-[21rem]",
+  "pr-[28rem]",
+  "pr-[28rem]",
+  "pr-[21rem]",
+  "pr-[14rem]",
+  "pr-[7rem]",
   "",
 ];
 const right_styles = [
   "",
-  "pl-[5rem]",
-  "pl-[10rem]",
-  "pl-[15rem]",
-  "pl-[20rem]",
-  "pl-[20rem]",
-  "pl-[15rem]",
-  "pl-[10rem]",
-  "pl-[5rem]",
+  "pl-[7rem]",
+  "pl-[14rem]",
+  "pl-[21rem]",
+  "pl-[28rem]",
+  "pl-[28rem]",
+  "pl-[21rem]",
+  "pl-[14rem]",
+  "pl-[7rem]",
   "",
 ];
 const duck_styles = ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""];
+
+const all_frames = duck_frames.concat(jump_frames, left_frames, right_frames);
 
 function AlienAnimation() {
   const navigate = useNavigate();
@@ -90,34 +92,19 @@ function AlienAnimation() {
   const [images, setImages] = useState<HTMLImageElement[]>([]);
 
   useEffect(() => {
-    duck_frames.forEach((image) => {
-      const img = new Image();
-      img.src = image;
-      setImages((prevImages) => [...prevImages, img]);
-    });
-
-    jump_frames.forEach((image) => {
-      const img = new Image();
-      img.src = image;
-      setImages((prevImages) => [...prevImages, img]);
-    });
-
-    left_frames.forEach((image) => {
-      const img = new Image();
-      img.src = image;
-      setImages((prevImages) => [...prevImages, img]);
-    });
-
-    right_frames.forEach((image) => {
+    all_frames.map((image) => {
       const img = new Image();
       img.src = image;
       setImages((prevImages) => [...prevImages, img]);
     });
   }, []);
 
-  useEffect(() => {
-    setImage(image_array[frame]);
-  }, [frame]);
+  function clearTimer() {
+    if (timer !== null) {
+      clearInterval(timer);
+      setTimer(null);
+    }
+  }
 
   function handleRelease() {
     setFrame(0);
@@ -132,8 +119,9 @@ function AlienAnimation() {
 
     const timer = setInterval(() => {
       setFrame((prevFrame) => (prevFrame + 1) % jump_frames.length);
-    }, 100);
+    }, 150);
 
+    clearTimer();
     setTimer(timer);
   }
 
@@ -144,8 +132,9 @@ function AlienAnimation() {
 
     const timer = setInterval(() => {
       setFrame((prevFrame) => (prevFrame + 1) % left_frames.length);
-    }, 100);
+    }, 150);
 
+    clearTimer();
     setTimer(timer);
   }
 
@@ -156,8 +145,9 @@ function AlienAnimation() {
 
     const timer = setInterval(() => {
       setFrame((prevFrame) => (prevFrame + 1) % right_frames.length);
-    }, 100);
+    }, 150);
 
+    clearTimer();
     setTimer(timer);
   }
 
@@ -170,6 +160,7 @@ function AlienAnimation() {
       setFrame((prevFrame) => (prevFrame + 1) % duck_frames.length);
     }, 150);
 
+    clearTimer();
     setTimer(timer);
   }
 
@@ -182,8 +173,8 @@ function AlienAnimation() {
         <img src={left_arrow} />
       </button>
 
-      <div className="mx-auto flex h-screen w-[80vw] items-center justify-center">
-        <div className="flex w-full flex-col gap-4 rounded p-5 ring-2 ring-slate-200">
+      <div className="mx-auto flex h-screen w-[60vw] items-center justify-center">
+        <div className="flex w-full flex-col gap-4 rounded p-5">
           <div className="flex flex-row justify-center gap-2">
             <button
               onMouseDown={handleJump}
@@ -217,7 +208,10 @@ function AlienAnimation() {
 
           <div className="m-auto flex h-[75vh] w-full flex-col-reverse items-center justify-items-center rounded p-2 ring-2 ring-slate-400">
             {active && (
-              <img src={image} className={`box-content w-[20%] ${image_styles[frame]}`} />
+              <img
+                src={image_array[frame]}
+                className={`box-content w-[25%] transition-all ${image_styles[frame]} `}
+              />
             )}
           </div>
         </div>

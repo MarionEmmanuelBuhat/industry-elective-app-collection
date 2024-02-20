@@ -88,8 +88,29 @@ function AlienAnimation() {
   const [image_styles, setImageStyle] = useState<any>([]);
 
   useEffect(() => {
+    duck_frames.forEach((image) => {
+      const img = new Image();
+      img.src = (image as any).default;
+    });
+
+    jump_frames.forEach((image) => {
+      const img = new Image();
+      img.src = (image as any).default;
+    });
+
+    left_frames.forEach((image) => {
+      const img = new Image();
+      img.src = (image as any).default;
+    });
+    
+    right_frames.forEach((image) => {
+      const img = new Image();
+      img.src = (image as any).default;
+    });
+  }, []);
+
+  useEffect(() => {
     setImage(image_array[frame]);
-    console.log(frame);
   }, [frame]);
 
   function handleRelease() {

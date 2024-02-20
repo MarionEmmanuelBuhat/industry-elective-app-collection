@@ -90,22 +90,22 @@ function AlienAnimation() {
   useEffect(() => {
     duck_frames.forEach((image) => {
       const img = new Image();
-      img.src = (image as any).default;
+      img.src = image;
     });
 
     jump_frames.forEach((image) => {
       const img = new Image();
-      img.src = (image as any).default;
+      img.src = image;
     });
 
     left_frames.forEach((image) => {
       const img = new Image();
-      img.src = (image as any).default;
+      img.src = image;
     });
     
     right_frames.forEach((image) => {
       const img = new Image();
-      img.src = (image as any).default;
+      img.src = image;
     });
   }, []);
 

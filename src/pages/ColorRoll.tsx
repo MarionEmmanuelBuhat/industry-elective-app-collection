@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
 import left_arrow from "../assets/left-arrow.svg";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 interface ColorItem {
@@ -8,7 +8,6 @@ interface ColorItem {
 }
 
 function getRandomNumber(): number {
-  console.log(Math.floor(Math.random() * 9));
   return Math.floor(Math.random() * 9); // Generates random integer from 0 to 8
 }
 
@@ -29,28 +28,28 @@ function ColorRoll() {
   const [timer, setTimer] = useState<any>(null);
   const [highlighted, setHighlighted] = useState<number>(-1);
 
-  useEffect(() => {
-    if (rolling) {
+  function handleClick() {
+    if (!rolling) {
+      setRolling(true);
+
       const timer = setInterval(() => {
         setHighlighted(getRandomNumber());
       }, 75);
 
       setTimer(timer);
-    } else {
-      clearInterval(timer);
-      setTimer(null);
-
-      if (highlighted === -1) {
-        return;
-      }
-
-      let new_color_set = [...color_set];
-      new_color_set[highlighted].points += 1;
-      setColorSet(new_color_set);
+      return;
     }
-  }, [rolling]);
 
-  function handleClick() {
+    clearInterval(timer);
+    setTimer(null);
+
+    let new_color_set = [...color_set];
+    new_color_set[highlighted].points += 1;
+    setColorSet(new_color_set);
+    setRolling(false);
+  }
+
+  function handleNavigate() {
     clearInterval(timer);
     setTimer(null);
 
@@ -59,7 +58,10 @@ function ColorRoll() {
 
   return (
     <>
-      <button onClick={handleClick} className={"absolute m-5 w-12 rounded-xl hover:bg-blue-300"}>
+      <button
+        onClick={handleNavigate}
+        className={"absolute m-5 w-12 rounded-xl hover:bg-blue-300"}
+      >
         <img src={left_arrow} />
       </button>
 
@@ -90,7 +92,7 @@ function ColorRoll() {
         </div>
 
         <button
-          onClick={() => setRolling((prevRolling) => !prevRolling)}
+          onClick={handleClick}
           className={`rounded bg-blue-500 p-3 font-bold text-white hover:bg-blue-700 
           ${rolling && "bg-red-500 hover:bg-red-700"}`}
         >

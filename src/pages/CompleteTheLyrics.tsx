@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 
 interface Lyrics {
@@ -24,16 +24,35 @@ function getColor(id: string) {
 function CompleteTheLyrics() {
   const navigate = useNavigate();
   const location = useLocation();
+  const index = useRef<number>(0);
   const { id } = useParams();
   const [lyric, setLyric] = useState<string>("");
   const [lyrics, setLyrics] = useState<Lyrics[]>([]);
 
   useEffect(() => {
-    if (lyric.length > 0) {
-      console.log("test");
-      setLyric("");
-      setLyrics([...lyrics, { lyric: lyric, color: getColor(id!) }]);
+    const currentLyric: Lyrics = { lyric: lyric, color: getColor(id!) };
+
+    if (lyric !== "") {
+      if (lyrics.length === index.current + 1) {
+        let newArray = [...lyrics];
+        newArray[index.current] = currentLyric;
+        setLyrics(newArray);
+      } else {
+        const currentLyric: Lyrics = { lyric: lyric, color: getColor(id!) };
+        setLyrics([...lyrics, currentLyric]);
+      }
+    } else if (lyric === "") {
+      if (lyrics.length === index.current + 1) {
+        lyrics.pop();
+      }
     }
+  }, [lyric]);
+
+  useEffect(() => {
+    if (lyrics.length === index.current + 1) {
+      index.current = index.current + 1;
+    }
+    setLyric("");
   }, [location]);
 
   return (

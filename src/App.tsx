@@ -3,6 +3,7 @@ import Home from "./pages/Home";
 import ColorSequence from "./pages/ColorSequence";
 import ColorRoll from "./pages/ColorRoll";
 import AlienAnimation from "./pages/AlienAnimation";
+import CompleteTheLyrics from "./pages/CompleteTheLyrics";
 
 function App() {
   return (
@@ -12,6 +13,8 @@ function App() {
         <Route path="/colorsequence" element={<ColorSequence />} />
         <Route path="/colorroll" element={<ColorRoll />} />
         <Route path="/alien" element={<AlienAnimation />} />
+        <Route path="/singers" element={<CompleteTheLyrics />} />
+        <Route path="/singers/:id" element={<CompleteTheLyrics />} />
       </Routes>
     </>
   );

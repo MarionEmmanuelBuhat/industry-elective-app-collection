@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import { HomeButton } from "../components/components";
 
 interface Lyrics {
   lyric: string;
@@ -23,7 +24,6 @@ function getColor(id: string) {
 
 function CompleteTheLyrics() {
   const navigate = useNavigate();
-  const location = useLocation();
   const index = useRef<number>(0);
   const { id } = useParams();
   const [lyric, setLyric] = useState<string>("");
@@ -34,58 +34,67 @@ function CompleteTheLyrics() {
 
     if (lyric !== "") {
       if (lyrics.length === index.current + 1) {
-        let newArray = [...lyrics];
-        newArray[index.current] = currentLyric;
-        setLyrics(newArray);
+        let newLyrics = [...lyrics];
+        newLyrics[index.current] = currentLyric;
+        setLyrics(newLyrics);
       } else {
-        const currentLyric: Lyrics = { lyric: lyric, color: getColor(id!) };
         setLyrics([...lyrics, currentLyric]);
       }
-    } else if (lyric === "") {
+    } else {
       if (lyrics.length === index.current + 1) {
         lyrics.pop();
+        // This forces a re-render
+        const newLyrics = [...lyrics];
+        setLyrics(newLyrics);
       }
     }
   }, [lyric]);
 
-  useEffect(() => {
-    if (lyrics.length === index.current + 1) {
+  function handleClick(location: string) {
+    if (lyrics.length > index.current) {
       index.current = index.current + 1;
     }
+
     setLyric("");
-  }, [location]);
+    navigate(location);
+  }
 
   return (
     <>
+      <HomeButton></HomeButton>
       <div className="m-auto flex h-screen w-8/12 flex-col items-center justify-center gap-4">
         <p className="text-2xl font-bold">Complete The Lyrics</p>
 
         <div className="flex flex-row text-white">
           <button
-            onClick={() => navigate("/singers/first")}
+            onClick={() => handleClick("/singers/first")}
             className="rounded-l-full bg-purple-500 px-3 py-2 text-lg hover:bg-purple-600 focus:outline-none focus:ring focus:ring-purple-300"
           >
             First Singer
           </button>
+
           <button
-            onClick={() => navigate("/singers/second")}
+            onClick={() => handleClick("/singers/second")}
             className="bg-lime-500 px-3 py-2 text-lg hover:bg-lime-700 focus:outline-none focus:ring focus:ring-lime-300"
           >
             Second Singer
           </button>
+
           <button
-            onClick={() => navigate("/singers/third")}
+            onClick={() => handleClick("/singers/third")}
             className="bg-cyan-500 px-3 py-2 text-lg hover:bg-cyan-700 focus:outline-none focus:ring focus:ring-cyan-300"
           >
             Third Singer
           </button>
+
           <button
-            onClick={() => navigate("/singers/fourth")}
+            onClick={() => handleClick("/singers/fourth")}
             className="rounded-r-full bg-pink-500 px-3 py-2 text-lg hover:bg-pink-700 focus:outline-none focus:ring focus:ring-pink-300"
           >
             Fourth Singer
           </button>
         </div>
+
         {id && (
           <input
             type="text"
@@ -94,7 +103,8 @@ function CompleteTheLyrics() {
             value={lyric}
           />
         )}
-        <div className="mb-5 flex min-h-[60%] w-full flex-col gap-2 overflow-y-scroll rounded-l-lg p-4 text-white ring-2 ring-neutral-400">
+
+        <div className="flex max-h-[60vh] min-h-[60vh] w-full flex-col gap-2 overflow-y-scroll rounded-l-lg p-4 text-white ring-2 ring-neutral-400">
           {lyrics.map((object, index) => (
             <p key={index} className={`${object.color} rounded-full px-6 py-3 text-lg`}>
               {object.lyric}

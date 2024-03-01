@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import left_arrow from "../assets/left-arrow.svg";
 import { useNavigate } from "react-router-dom";
+import { HomeButton } from "../components/components";
 import dock1 from "../assets/moves/dock-1.png";
 import dock2 from "../assets/moves/dock-2.png";
 import dock3 from "../assets/moves/dock-3.png";
@@ -166,12 +166,7 @@ function AlienAnimation() {
 
   return (
     <>
-      <button
-        onClick={() => navigate(-1)}
-        className={"absolute m-5 w-12 rounded-xl hover:bg-blue-300"}
-      >
-        <img src={left_arrow} />
-      </button>
+      <HomeButton></HomeButton>
 
       <div className="mx-auto flex h-screen w-[60vw] items-center justify-center">
         <div className="flex w-full flex-col gap-4 rounded p-5">

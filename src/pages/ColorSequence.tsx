@@ -1,7 +1,7 @@
 import { Grid, Button } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import left_arrow from "../assets/left-arrow.svg";
+import { HomeButton } from "../components/components";
 
 const color_set = [
   "#FFC0CB", // pink
@@ -55,12 +55,7 @@ function App() {
 
   return (
     <>
-      <button
-        onClick={() => navigate(-1)}
-        className={"absolute m-5 w-12 rounded-xl hover:bg-blue-300"}
-      >
-        <img src={left_arrow} />
-      </button>
+      <HomeButton></HomeButton>
 
       <Grid
         container

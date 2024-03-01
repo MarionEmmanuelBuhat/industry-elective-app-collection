@@ -93,8 +93,8 @@ function ColorRoll() {
 
         <button
           onClick={handleClick}
-          className={`rounded bg-blue-500 p-3 font-bold text-white hover:bg-blue-700 
-          ${rolling && "bg-red-500 hover:bg-red-700"}`}
+          className={`rounded bg-blue-500 p-3 font-bold text-white hover:bg-blue-700 focus:ring-2 focus:ring-blue-300 
+          ${rolling && "bg-red-500 hover:bg-red-700 focus:ring-red-300"}`}
         >
           {rolling ? "Stop Rolling" : "Start Rolling"}
         </button>

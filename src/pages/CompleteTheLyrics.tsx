@@ -66,33 +66,31 @@ function CompleteTheLyrics() {
         <p className="text-2xl font-bold">Complete The Lyrics</p>
 
         <div className="flex flex-row text-white">
-          <button
-            onClick={() => handleClick("/singers/first")}
-            className="rounded-l-full bg-purple-500 px-3 py-2 text-lg hover:bg-purple-600 focus:outline-none focus:ring focus:ring-purple-300"
-          >
-            First Singer
-          </button>
-
-          <button
-            onClick={() => handleClick("/singers/second")}
-            className="bg-lime-500 px-3 py-2 text-lg hover:bg-lime-700 focus:outline-none focus:ring focus:ring-lime-300"
-          >
-            Second Singer
-          </button>
-
-          <button
-            onClick={() => handleClick("/singers/third")}
-            className="bg-cyan-500 px-3 py-2 text-lg hover:bg-cyan-700 focus:outline-none focus:ring focus:ring-cyan-300"
-          >
-            Third Singer
-          </button>
-
-          <button
-            onClick={() => handleClick("/singers/fourth")}
-            className="rounded-r-full bg-pink-500 px-3 py-2 text-lg hover:bg-pink-700 focus:outline-none focus:ring focus:ring-pink-300"
-          >
-            Fourth Singer
-          </button>
+          {Array.from({ length: 4 }).map((_, index) => (
+            <button
+              key={index}
+              onClick={() => {
+                handleClick(
+                  [
+                    "/singers/first",
+                    "/singers/second",
+                    "/singers/third",
+                    "/singers/fourth",
+                  ][index]
+                );
+              }}
+              className={
+                [
+                  "rounded-l-full bg-purple-500 px-3 py-2 text-lg hover:bg-purple-600 focus:outline-none focus:ring focus:ring-purple-300",
+                  "bg-lime-500 px-3 py-2 text-lg hover:bg-lime-700 focus:outline-none focus:ring focus:ring-lime-300",
+                  "bg-cyan-500 px-3 py-2 text-lg hover:bg-cyan-700 focus:outline-none focus:ring focus:ring-cyan-300",
+                  "rounded-r-full bg-pink-500 px-3 py-2 text-lg hover:bg-pink-700 focus:outline-none focus:ring focus:ring-pink-300",
+                ][index]
+              }
+            >
+              {["First Singer", "Second Singer", "Third Singer", "Fourth Singer"][index]}
+            </button>
+          ))}
         </div>
 
         {id && (

@@ -80,9 +80,7 @@ const duck_styles = ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "",
 const all_frames = duck_frames.concat(jump_frames, left_frames, right_frames);
 
 function AlienAnimation() {
-  const navigate = useNavigate();
   const [active, setActive] = useState<boolean>(false);
-  const [image, setImage] = useState<any>(null);
   const [timer, setTimer] = useState<any>(null);
 
   const [frame, setFrame] = useState<number>(0);

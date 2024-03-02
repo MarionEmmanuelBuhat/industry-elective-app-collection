@@ -25,8 +25,7 @@ function shuffleArray(array: string[]) {
   return array;
 }
 
-function App() {
-  const navigate = useNavigate();
+function ColorSequence() {
   const [color_sequence, setColorSequence] = useState<string[]>([]);
   const [shuffled_sequence, setShuffledSequence] = useState<string[]>([]);
   const [index, setIndex] = useState<number>(0);
@@ -98,4 +97,4 @@ function App() {
   );
 }
 
-export default App;
+export default ColorSequence;

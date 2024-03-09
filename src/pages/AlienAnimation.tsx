@@ -164,7 +164,7 @@ function AlienAnimation() {
 
   return (
     <>
-      <HomeButton></HomeButton>
+      <HomeButton />
 
       <div className="mx-auto flex h-screen w-[60vw] items-center justify-center">
         <div className="flex w-full flex-col gap-4 rounded p-5">
@@ -172,28 +172,28 @@ function AlienAnimation() {
             <button
               onMouseDown={handleJump}
               onMouseUp={handleRelease}
-              className="rounded-md bg-blue-300 px-10 py-2 hover:bg-blue-400 active:bg-blue-500"
+              className="rounded-md bg-blue-300 px-10 py-2 transition-all duration-300 hover:bg-blue-400 active:bg-blue-500"
             >
               Jump
             </button>
             <button
               onMouseDown={handleLeft}
               onMouseUp={handleRelease}
-              className="rounded-md bg-blue-300 px-10 py-2 hover:bg-blue-400 active:bg-blue-500"
+              className="rounded-md bg-blue-300 px-10 py-2 transition-all duration-300 hover:bg-blue-400 active:bg-blue-500"
             >
               Left
             </button>
             <button
               onMouseDown={handleRight}
               onMouseUp={handleRelease}
-              className="rounded-md bg-blue-300 px-10 py-2 hover:bg-blue-400 active:bg-blue-500"
+              className="rounded-md bg-blue-300 px-10 py-2 transition-all duration-300 hover:bg-blue-400 active:bg-blue-500"
             >
               Right
             </button>
             <button
               onMouseDown={handleDuck}
               onMouseUp={handleRelease}
-              className="rounded-md bg-blue-300 px-10 py-2 hover:bg-blue-400 active:bg-blue-500"
+              className="rounded-md bg-blue-300 px-10 py-2 transition-all duration-300 hover:bg-blue-400 active:bg-blue-500"
             >
               Duck
             </button>

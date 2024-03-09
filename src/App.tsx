@@ -4,6 +4,7 @@ import ColorSequence from "./pages/ColorSequence";
 import ColorRoll from "./pages/ColorRoll";
 import AlienAnimation from "./pages/AlienAnimation";
 import CompleteTheLyrics from "./pages/CompleteTheLyrics";
+import Bingo from "./pages/Bingo";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/alien" element={<AlienAnimation />} />
         <Route path="/singers" element={<CompleteTheLyrics />} />
         <Route path="/singers/:id" element={<CompleteTheLyrics />} />
+        <Route path="/bingo" element={<Bingo />} />
       </Routes>
     </>
   );

@@ -9,6 +9,7 @@ function Home() {
           <NavigationButton location="/colorroll">Color Roll</NavigationButton>
           <NavigationButton location="/alien">Alien Animation</NavigationButton>
           <NavigationButton location="/singers">Complete The Lyrics</NavigationButton>
+          <NavigationButton location="/bingo">Bingo</NavigationButton>
         </div>
       </div>
     </>

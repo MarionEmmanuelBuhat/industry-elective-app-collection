@@ -1,6 +1,7 @@
 import left_arrow from "../assets/left-arrow.svg";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { HomeButton } from "../components/components";
 
 interface ColorItem {
   color: string;
@@ -49,7 +50,7 @@ function ColorRoll() {
     setRolling(false);
   }
 
-  function handleNavigate() {
+  function handleBackButton() {
     clearInterval(timer);
     setTimer(null);
 
@@ -58,12 +59,7 @@ function ColorRoll() {
 
   return (
     <>
-      <button
-        onClick={handleNavigate}
-        className={"absolute m-5 w-12 rounded-xl hover:bg-blue-300"}
-      >
-        <img src={left_arrow} />
-      </button>
+      <HomeButton handleClick={handleBackButton} />
 
       <div className="m-auto flex h-screen w-1/2 flex-col items-center justify-center gap-4">
         <div className="flex justify-center gap-2">
@@ -93,7 +89,7 @@ function ColorRoll() {
 
         <button
           onClick={handleClick}
-          className={`rounded bg-blue-500 p-3 font-bold text-white hover:bg-blue-700 focus:ring-2 focus:ring-blue-300 
+          className={`rounded bg-blue-500 p-3 font-bold text-white transition-all duration-300 hover:bg-blue-700 focus:ring-2 focus:ring-blue-300 
           ${rolling && "bg-red-500 hover:bg-red-700 focus:ring-red-300"}`}
         >
           {rolling ? "Stop Rolling" : "Start Rolling"}

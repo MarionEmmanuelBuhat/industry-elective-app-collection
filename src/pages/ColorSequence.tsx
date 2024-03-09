@@ -54,7 +54,7 @@ function ColorSequence() {
 
   return (
     <>
-      <HomeButton></HomeButton>
+      <HomeButton />
 
       <Grid
         container

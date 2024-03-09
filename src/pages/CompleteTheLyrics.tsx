@@ -61,7 +61,7 @@ function CompleteTheLyrics() {
 
   return (
     <>
-      <HomeButton></HomeButton>
+      <HomeButton />
       <div className="m-auto flex h-screen w-8/12 flex-col items-center justify-center gap-4">
         <p className="text-2xl font-bold">Complete The Lyrics</p>
 

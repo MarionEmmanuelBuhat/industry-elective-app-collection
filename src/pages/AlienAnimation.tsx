@@ -110,56 +110,33 @@ function AlienAnimation() {
     setActive(false);
   }
 
-  function handleJump() {
+  function initializeAction(imageArray: string[], imageStyle: string[]) {
     setActive(true);
-    setImageArray(jump_frames);
-    setImageStyle(jump_styles);
+    setImageArray(imageArray);
+    setImageStyle(imageStyle);
 
     const timer = setInterval(() => {
-      setFrame((prevFrame) => (prevFrame + 1) % jump_frames.length);
+      setFrame((prevFrame) => (prevFrame + 1) % imageArray.length);
     }, 150);
 
     clearTimer();
     setTimer(timer);
+  }
+
+  function handleJump() {
+    initializeAction(jump_frames, jump_styles);
   }
 
   function handleLeft() {
-    setActive(true);
-    setImageArray(left_frames);
-    setImageStyle(left_styles);
-
-    const timer = setInterval(() => {
-      setFrame((prevFrame) => (prevFrame + 1) % left_frames.length);
-    }, 150);
-
-    clearTimer();
-    setTimer(timer);
+    initializeAction(left_frames, left_styles);
   }
 
   function handleRight() {
-    setActive(true);
-    setImageArray(right_frames);
-    setImageStyle(right_styles);
-
-    const timer = setInterval(() => {
-      setFrame((prevFrame) => (prevFrame + 1) % right_frames.length);
-    }, 150);
-
-    clearTimer();
-    setTimer(timer);
+    initializeAction(right_frames, right_styles);
   }
 
   function handleDuck() {
-    setActive(true);
-    setImageArray(duck_frames);
-    setImageStyle(duck_styles);
-
-    const timer = setInterval(() => {
-      setFrame((prevFrame) => (prevFrame + 1) % duck_frames.length);
-    }, 150);
-
-    clearTimer();
-    setTimer(timer);
+    initializeAction(duck_frames, duck_styles);
   }
 
   return (

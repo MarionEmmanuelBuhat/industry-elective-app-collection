@@ -210,7 +210,6 @@ function Bingo() {
 
   return (
     <>
-      <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
       <HomeButton handleClick={submitted ? handleBackButton : null} />
       {!submitted && <JoinGame setCode={setCode} onClick={getCard} />}
       {submitted && (

@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { HomeButton } from "../components/components";
 import dock1 from "../assets/moves/dock-1.png";
 import dock2 from "../assets/moves/dock-2.png";

@@ -1,4 +1,3 @@
-import left_arrow from "../assets/left-arrow.svg";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { HomeButton } from "../components/components";

@@ -1,6 +1,5 @@
 import { Grid, Button } from "@mui/material";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { HomeButton } from "../components/components";
 
 const color_set = [

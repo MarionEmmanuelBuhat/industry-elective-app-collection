@@ -46,14 +46,21 @@ const location_name: string[] = [
 ];
 
 const colors = [
-  "#FF5733", // Coral
-  "#FFC300", // Sunflower
-  "#C70039", // Crimson
-  "#900C3F", // Rose
-  "#581845", // Eggplant
-  "#273746", // Asphalt
-  "#34495E", // Wet Asphalt
-  "#1F618D", // Belize Hole
+  "#800000",
+  "#9A6324",
+  "#808000",
+  "#469990",
+  "#000075",
+  "#e6194B",
+  "#f58231",
+  "#ffe119",
+  "#bfef45",
+  "#3cb44b",
+  "#42d4f4",
+  "#4363d8",
+  "#911eb4",
+  "#f032e6",
+  "#fabed4",
 ];
 
 const data = [
@@ -102,7 +109,7 @@ function JeepCodes() {
 
   function displayResult() {
     return (
-      <div className="flex flex-col gap-2">
+      <div className="mb-4 flex flex-col gap-2 overflow-y-auto">
         {indices.map((index) => {
           const route = jeepney_routes[index];
           const row = nodes[index];

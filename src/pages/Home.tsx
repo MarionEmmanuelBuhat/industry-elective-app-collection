@@ -10,6 +10,7 @@ function Home() {
           <NavigationButton location="/alien">Alien Animation</NavigationButton>
           <NavigationButton location="/singers">Complete The Lyrics</NavigationButton>
           <NavigationButton location="/bingo">Bingo</NavigationButton>
+          <NavigationButton location="/jeep">Jeep Codes</NavigationButton>
         </div>
       </div>
     </>

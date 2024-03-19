@@ -5,6 +5,7 @@ import ColorRoll from "./pages/ColorRoll";
 import AlienAnimation from "./pages/AlienAnimation";
 import CompleteTheLyrics from "./pages/CompleteTheLyrics";
 import Bingo from "./pages/Bingo";
+import JeepCodes from "./pages/JeepCodes";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/singers" element={<CompleteTheLyrics />} />
         <Route path="/singers/:id" element={<CompleteTheLyrics />} />
         <Route path="/bingo" element={<Bingo />} />
+        <Route path="/jeep" element={<JeepCodes />} />
       </Routes>
     </>
   );
